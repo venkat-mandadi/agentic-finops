@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
 
-from agentic_finops.cli import main  # noqa: E402
+from agentic_finops.cli import main
 
 if __name__ == "__main__":
     raise SystemExit(main())

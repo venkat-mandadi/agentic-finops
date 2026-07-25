@@ -33,9 +33,11 @@ def render_text(recs: list[Recommendation]) -> str:
     cost = [r for r in recs if r.category is Category.COST]
     rel = [r for r in recs if r.category is Category.RELIABILITY]
     out = [
-        f"GKE right-sizing: {s['findings']} findings — "
-        f"${s['monthly_savings']:,.0f}/mo (${s['annual_savings']:,.0f}/yr) reclaimable, "
-        f"{s['reliability_findings']} reliability risk(s)",
+        (
+            f"GKE right-sizing: {s['findings']} findings — "
+            f"${s['monthly_savings']:,.0f}/mo (${s['annual_savings']:,.0f}/yr) reclaimable, "
+            f"{s['reliability_findings']} reliability risk(s)"
+        ),
         "=" * 78,
         "COST — reclaim over-provisioned requests",
         "-" * 78,
@@ -53,9 +55,11 @@ def render_markdown(recs: list[Recommendation]) -> str:
     lines = [
         "# ⚙️ GKE right-sizing report",
         "",
-        f"**{s['findings']} findings** — **${s['monthly_savings']:,.0f}/mo "
-        f"(${s['annual_savings']:,.0f}/yr)** reclaimable across {s['cost_findings']} workloads, "
-        f"plus **{s['reliability_findings']} reliability risk(s)** to fix first.",
+        (
+            f"**{s['findings']} findings** — **${s['monthly_savings']:,.0f}/mo "
+            f"(${s['annual_savings']:,.0f}/yr)** reclaimable across {s['cost_findings']} workloads, "
+            f"plus **{s['reliability_findings']} reliability risk(s)** to fix first."
+        ),
         "",
         "## 💸 Cost — reclaim over-provisioned requests",
         "| Severity | Workload | Change | Est. monthly savings |",

@@ -14,7 +14,15 @@ from .policy import Policy
 __version__ = "0.2.0"
 
 __all__ = [
-    "metrics", "rules", "recommender", "report",
-    "Workload", "Recommendation", "NodeCost", "Policy",
-    "Runtime", "Severity", "Category",
+    "Category",
+    "NodeCost",
+    "Policy",
+    "Recommendation",
+    "Runtime",
+    "Severity",
+    "Workload",
+    "metrics",
+    "recommender",
+    "report",
+    "rules",
 ]

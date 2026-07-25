@@ -21,7 +21,7 @@ except ImportError:  # pragma: no cover
     FastMCP = None
 
 
-def build_server(workloads_csv: str) -> "FastMCP":
+def build_server(workloads_csv: str) -> FastMCP:
     if FastMCP is None:  # pragma: no cover
         raise SystemExit('The "mcp" package is required. Install: pip install "agentic-finops[mcp]"')
 
