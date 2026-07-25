@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-finops"
+version = "0.1.0"
+description = "An MCP-driven FinOps agent for cloud cost governance."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Venkat Mandadi" }]
+keywords = ["finops", "sre", "mcp", "gcp", "cost-optimization", "kubernetes"]
+dependencies = []
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2.0"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+finops-scan = "agentic_finops.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

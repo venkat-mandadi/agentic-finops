@@ -1,0 +1,9 @@
+namespace,workload,kind,cluster,project,replicas,runtime,cpu_request_m,cpu_limit_m,mem_request_mi,mem_limit_mi,cpu_avg_m,cpu_p95_m,mem_avg_mi,mem_peak_mi,startup_cpu_peak_m,startup_mem_peak_mi,startup_secs,heap_max_mi,heap_used_peak_mi,nonheap_used_mi,threads_peak,thread_ceiling,cpu_throttle_pct,oom_killed,restarts,vpa_cpu_target_m,vpa_mem_target_mi
+payments-prod,payments-api,Deployment,prod-use1,payments-prod,4,jvm,1000,0,2048,2560,180,250,1100,1400,900,1500,70,1024,780,300,210,512,0,0,0,350,1600
+catalog-prod,catalog-worker,Deployment,prod-use1,catalog-prod,3,jvm,500,500,1024,1280,300,470,700,850,700,900,60,768,600,220,180,400,0.35,0,2,550,1000
+payments-prod,checkout-svc,Deployment,prod-use1,payments-prod,3,jvm,400,0,1024,1024,150,220,820,1010,600,980,65,900,870,260,150,512,0,3,5,260,1300
+data-prod,batch-processor,Deployment,prod-usc1,data-prod,10,other,2000,0,4096,4096,210,300,700,900,340,860,8,0,0,0,0,0,0,0,0,400,1100
+legacy-prod,legacy-monolith,StatefulSet,prod-use1,legacy-prod,3,jvm,2000,2000,3072,3072,280,400,1600,2100,2600,2400,110,1536,1400,380,300,400,0.05,0,1,520,2400
+web-prod,healthy-api,Deployment,prod-use1,web-prod,4,jvm,500,0,1024,1536,300,420,780,900,650,880,45,640,560,220,160,512,0,0,0,480,980
+notify-prod,notifications,Deployment,prod-use1,notify-prod,3,jvm,400,0,1024,1280,160,240,640,780,500,760,40,640,520,210,470,512,0,0,0,260,900
+analytics-prod,reporting-svc,Deployment,prod-usc1,analytics-prod,4,jvm,250,500,1024,1536,600,950,800,950,700,900,50,700,620,230,200,512,0.12,0,0,1000,1100

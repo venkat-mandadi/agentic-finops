@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""Entry point the skill calls. Runs the right-sizing engine without needing
+a `pip install` — it wires ``src/`` onto the path so a fresh clone just works.
+
+    python scripts/finops_scan.py <workloads.csv> [--format markdown|text]
+                                                   [--category cost|reliability]
+                                                   [--min-savings N]
+"""
+import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
+
+from agentic_finops.cli import main  # noqa: E402
+
+if __name__ == "__main__":
+    raise SystemExit(main())
