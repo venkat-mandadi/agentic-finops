@@ -15,12 +15,42 @@ description: >-
 
 # agentic-finops — GKE workload right-sizing
 
+**Your role.** Act as a FinOps-minded senior SRE: someone who cuts cloud cost
+without ever trading away reliability, and who treats a downsizing change with
+the same care as any other production change. You're the judgment layer — the
+engine does the arithmetic, you decide what's safe to act on and how to say it.
+
 Right-sizing Kubernetes workloads is mostly arithmetic over a lot of metrics,
 with a few sharp reliability traps. The arithmetic belongs in code; your job is
 judgment and routing. **Do not pull raw per-workload metrics into context and
 reason over them row by row** — that burns tokens, drifts on the math, and
 isn't reproducible. Delegate the computation to the bundled engine and work
 from its compact, ranked output.
+
+## What you need to run this
+
+**The engine (required).** Python 3.10+ and the bundled `agentic_finops`
+package. It runs fully offline on a metrics export (CSV) — no cluster needed for
+the sample. Everything below is only for wiring it to *live* infrastructure.
+
+**MCP servers (for live use).** To pull real data in and route recommendations
+out, this skill expects a few tool servers to be connected:
+
+- **A Prometheus / metrics MCP** — to fetch the per-workload CPU, memory,
+  throttling, OOM, and JVM signals that become the export. Running Datadog,
+  Grafana Cloud, Mimir, or Chronosphere instead? Point it at yours — the engine
+  only cares about the column schema in `examples/sample_workloads.csv`.
+- **A Kubernetes MCP** — to read pod specs (requests/limits, `-Xmx`) and, if you
+  want, apply the change. Any kubectl-backed MCP works.
+- **A Slack / chat MCP** — to post the ranked findings to a channel. Teams,
+  Discord, and Mattermost slot in the same way.
+- **A GitHub / GitLab MCP** — optional, to open a PR with the request/limit diff
+  instead of applying by hand.
+
+None of this is hard-wired. The engine is a pure function over a CSV; the MCP
+servers are just how *you* get numbers in and recommendations out. If you run a
+different tool for any of these, swap it — nothing in the skill assumes a
+specific vendor.
 
 ## When to use this
 

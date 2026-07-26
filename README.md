@@ -17,13 +17,13 @@ turns into a 3 a.m. OOM.
 > proprietary bits are stripped; the approach — and the reasoning that keeps it
 > safe — is here in full and runnable.
 
-**Two layers, on purpose.** A thin Claude **skill** ([`SKILL.md`](SKILL.md))
-does the orchestration — locate the export, run the scan, split cost from
-reliability, route to Slack or a PR. A Python **engine** (`src/agentic_finops/`)
-does the heavy computation. The agent spends its tokens on *judgment*, not on
-reasoning over thousands of raw metrics row by row — which is faster, cheaper,
-and deterministic. This is the "thin orchestration delegating heavy computation
-to direct-API Python" pattern, made concrete.
+**Why split it into a skill and an engine?** A thin Claude **skill**
+([`SKILL.md`](SKILL.md)) does the orchestration — locate the export, run the
+scan, split cost from reliability, route to Slack or a PR. The number-crunching
+lives in a Python **engine** (`src/agentic_finops/`). That way the model reasons
+about the *judgment calls*, not about thousands of raw metric rows one at a time,
+which is faster, cheaper, and deterministic. It's the "thin orchestration, heavy
+compute in direct-API Python" pattern, made concrete.
 
 ---
 
@@ -137,7 +137,7 @@ Goldilocks/VPA  ─┘                    (startup     (pure,      (savings +
                                        excluded)    tested)     ranking)   └─▶ MCP ─▶ Claude ─▶ Slack / PR
 ```
 
-## Design decisions (the interesting part)
+## Design decisions
 
 - **p95, startup excluded.** Steady-state CPU uses p95 with the warm-up window
   filtered out; averages hide bursts and startup inflates everything.
