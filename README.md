@@ -12,6 +12,9 @@ turns into a 3 a.m. OOM.
   <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
+![demo](assets/agentic-finops-demo.gif)
+
+
 > A generalized, open version of a system I run in production, where agentic
 > FinOps drove **$1.3M+ in annualized savings** across 16 GCP projects. The
 > proprietary bits are stripped; the approach — and the reasoning that keeps it
